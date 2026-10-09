@@ -6,10 +6,8 @@
 
 **MCP server and bridge plugin for Tauri v3 development**
 
-[![npm version](https://img.shields.io/npm/v/@hypothesi/tauri-mcp-server?style=flat-square&color=0ea5e9)](https://www.npmjs.com/package/@hypothesi/tauri-mcp-server)
-[![crates.io](https://img.shields.io/crates/v/tauri-plugin-mcp-bridge?style=flat-square&color=e6522c)](https://crates.io/crates/tauri-plugin-mcp-bridge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-8b5cf6.svg?style=flat-square)](LICENSE)
-[![Tauri v3 alpha](https://img.shields.io/badge/Tauri-v3--alpha-FFC131?style=flat-square&logo=tauri&logoColor=white)](https://tauri.app)
+[![Tauri v3](https://img.shields.io/badge/Tauri-v3-FFC131?style=flat-square&logo=tauri&logoColor=white)](https://tauri.app)
 
 [Repository](https://github.com/RealAlexandreAI/mcp-server-tauri-v3) · [Getting Started](#quick-start) · [Available Tools](#available-tools)
 
@@ -85,7 +83,14 @@ That's it! The AI handles all the setup details while keeping you in control. �
 <details>
 <summary><strong>Manual Setup</strong></summary>
 
-If you prefer to set up manually, see the [Getting Started guide](https://hypothesi.github.io/mcp-server-tauri/guides/getting-started.html) or the [plugin documentation](./packages/tauri-plugin-mcp-bridge/README.md).
+If you prefer to set up manually, see the [Getting Started guide](./docs/guides/getting-started.md) or the [plugin documentation](./packages/tauri-plugin-mcp-bridge/README.md).
+
+This fork is not published to crates.io or npm. Add the bridge plugin as a git
+dependency:
+
+```toml
+tauri-plugin-mcp-bridge = { git = "https://github.com/RealAlexandreAI/mcp-server-tauri-v3.git", branch = "master" }
+```
 
 </details>
 

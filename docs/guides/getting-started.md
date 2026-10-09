@@ -190,13 +190,14 @@ The copied text contains step-by-step instructions for:
 
 #### 1. Install the Rust Plugin
 
-From your `src-tauri` directory:
+This fork is consumed as a git dependency, not from crates.io. Add it to
+`src-tauri/Cargo.toml`:
 
-```bash
-cargo add tauri-plugin-mcp-bridge
+```toml
+tauri-plugin-mcp-bridge = { git = "https://github.com/RealAlexandreAI/mcp-server-tauri-v3.git", branch = "master" }
 ```
 
-Or manually add to `Cargo.toml`: <code>tauri-plugin-mcp-bridge = "{{ versions.plugin.cargo }}"</code>
+Once the branch is stable, pin the commit instead of tracking `master`.
 
 #### 2. Register the Plugin
 

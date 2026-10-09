@@ -16,9 +16,10 @@ pub fn prepare_window_for_screenshot<R: Runtime>(window: &WebviewWindow<R>) -> R
 
     window
         .with_webview(move |webview| unsafe {
-            let wkwebview: &WKWebView = webview
-                .downcast_ref::<WKWebView>()
-                .expect("macOS webview must be a WKWebView");
+            let Some(webview) = webview.downcast_ref::<tauri_runtime_wry::Webview>() else {
+                return;
+            };
+            let wkwebview: &WKWebView = &*(webview.inner() as *const WKWebView);
             let ns_window: *mut objc2::runtime::AnyObject = objc2::msg_send![wkwebview, window];
 
             if !ns_window.is_null() && is_window_fully_occluded(ns_window) {

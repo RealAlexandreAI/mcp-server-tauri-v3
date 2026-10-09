@@ -77,7 +77,7 @@ The plugin manifest lives at `.claude-plugin/plugin.json`:
 ```json
 {
   "name": "tauri-mcp-cli",
-  "description": "Agent Skills for automating and testing Tauri v2 applications",
+  "description": "Agent Skills for automating and testing Tauri v3 applications",
   "version": "0.9.0"
 }
 ```

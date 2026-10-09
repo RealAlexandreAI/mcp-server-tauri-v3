@@ -5,7 +5,7 @@ Generated from `domain_map.yaml`. Human-readable companion for review.
 ## Library Overview
 
 **Package:** `@hypothesi/tauri-mcp-cli`  
-**Audience:** AI coding agents automating or testing Tauri v2 desktop and mobile applications  
+**Audience:** AI coding agents automating or testing Tauri v3 desktop and mobile applications  
 **Structure:** Single bundled skill (`tauri-mcp-cli`)
 
 ---

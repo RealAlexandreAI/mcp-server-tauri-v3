@@ -74,18 +74,23 @@ fn native_evaluate_js<R: Runtime>(
     let (tx, rx) = mpsc::channel::<Result<Value, String>>();
     let tx = Arc::new(Mutex::new(Some(tx)));
 
-    let script_ns = NSString::from_str(script);
-    let script_ptr = Arc::new(script_ns);
-
-    let script_for_closure = Arc::clone(&script_ptr);
+    let script = script.to_string();
 
     window
         .with_webview(move |webview| {
             unsafe {
-                let wkwebview: &WKWebView = webview
-                    .downcast_ref::<WKWebView>()
-                    .expect("macOS webview must be a WKWebView");
+                let Some(webview) = webview.downcast_ref::<tauri_runtime_wry::Webview>() else {
+                    if let Some(tx) = tx.lock().unwrap().take() {
+                        let _ =
+                            tx.send(Err("Webview is not backed by the wry runtime".to_string()));
+                    }
+                    return;
+                };
+                let wkwebview: &WKWebView = &*(webview.inner() as *const WKWebView);
 
+                // NSString is not Send, so the script string is converted here, on
+                // the main thread, after the closure crosses the thread boundary.
+                let script_ns = NSString::from_str(&script);
                 let tx_clone = tx.clone();
                 let handler = RcBlock::new(
                     move |result: *mut objc2::runtime::AnyObject, error: *mut NSError| {
@@ -137,7 +142,7 @@ fn native_evaluate_js<R: Runtime>(
                     },
                 );
 
-                wkwebview.evaluateJavaScript_completionHandler(&script_for_closure, Some(&handler));
+                wkwebview.evaluateJavaScript_completionHandler(&script_ns, Some(&handler));
             }
         })
         .map_err(|e| format!("Failed to access webview: {e}"))?;

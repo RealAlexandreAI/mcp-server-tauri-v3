@@ -32,12 +32,20 @@ pub fn capture_viewport<R: Runtime>(
             .with_webview(move |webview| {
                 unsafe {
                     // Get the WKWebView from Tauri's webview handle
-                    let wkwebview: &WKWebView = webview
-                        .downcast_ref::<WKWebView>()
-                        .expect("macOS webview must be a WKWebView");
+                    let Some(webview) = webview.downcast_ref::<tauri_runtime_wry::Webview>() else {
+                        if let Some(tx) = tx.lock().unwrap().take() {
+                            let _ = tx.send(Err(ScreenshotError::CaptureFailed(
+                                "Webview is not backed by the wry runtime".to_string(),
+                            )));
+                        }
+                        return;
+                    };
+                    let wkwebview: &WKWebView = &*(webview.inner() as *const WKWebView);
 
                     // Create snapshot configuration (nil means capture visible viewport)
-                    let config = WKSnapshotConfiguration::new();
+                    let config = WKSnapshotConfiguration::new(
+                        objc2::MainThreadMarker::new().expect("with_webview runs on the main thread"),
+                    );
 
                     // Create completion handler block
                     let tx_clone = tx.clone();
@@ -135,9 +143,5 @@ unsafe fn convert_nsimage_to_png(
         .ok_or_else(|| ScreenshotError::EncodeFailed("Failed to create PNG data".to_string()))?;
 
     // Convert NSData to Vec<u8>
-    let length = png_data.len();
-    let bytes = png_data.bytes();
-    let data = std::slice::from_raw_parts(bytes.as_ptr(), length).to_vec();
-
-    Ok(data)
+    Ok(png_data.to_vec())
 }
