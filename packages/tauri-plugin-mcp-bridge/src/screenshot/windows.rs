@@ -25,6 +25,12 @@ pub fn capture_viewport<R: Runtime>(
             .with_webview(move |webview| {
                 unsafe {
                     // Get ICoreWebView2 from Tauri's webview handle
+                    let Some(webview) = webview.downcast_ref::<tauri_runtime_wry::Webview>() else {
+                        let _ = tx.send(Err(ScreenshotError::CaptureFailed(
+                            "Webview is not backed by the wry runtime".to_string(),
+                        )));
+                        return;
+                    };
                     let controller = webview.controller();
                     let core_webview = controller.CoreWebView2().unwrap();
 

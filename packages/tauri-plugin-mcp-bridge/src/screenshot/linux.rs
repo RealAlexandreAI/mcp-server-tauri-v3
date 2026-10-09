@@ -18,7 +18,14 @@ pub fn capture_viewport<R: Runtime>(
 
         window
             .with_webview(move |platform_webview| {
-                let webview = platform_webview.inner();
+                let Some(webview) = platform_webview.downcast_ref::<tauri_runtime_wry::Webview>()
+                else {
+                    let _ = tx.send(Err(ScreenshotError::CaptureFailed(
+                        "Webview is not backed by the wry runtime".to_string(),
+                    )));
+                    return;
+                };
+                let webview = webview.inner();
 
                 webview.snapshot(
                     SnapshotRegion::Visible,

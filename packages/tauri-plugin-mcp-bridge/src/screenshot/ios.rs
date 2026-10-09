@@ -32,10 +32,19 @@ pub fn capture_viewport<R: Runtime>(
                     // Get the WKWebView as a raw AnyObject pointer
                     // We can't use the typed WKWebView because objc2-web-kit requires
                     // objc2-app-kit (macOS only). On iOS, we use raw msg_send! instead.
+                    let Some(webview) = webview.downcast_ref::<tauri_runtime_wry::Webview>() else {
+                        let _ = tx.send(Err(ScreenshotError::CaptureFailed(
+                            "Webview is not backed by the wry runtime".to_string(),
+                        )));
+                        return;
+                    };
                     let wkwebview: *mut AnyObject = webview.inner().cast();
 
                     // Create snapshot configuration (captures visible viewport)
-                    let config = WKSnapshotConfiguration::new();
+                    let config = WKSnapshotConfiguration::new(
+                        objc2::MainThreadMarker::new()
+                            .expect("with_webview runs on the main thread"),
+                    );
 
                     // Create completion handler block using RcBlock
                     // RcBlock is reference-counted and stays alive until the callback completes
@@ -149,9 +158,5 @@ unsafe fn convert_uiimage_to_png(
     }
 
     let data = &*png_data;
-    let length = data.len();
-    let bytes = data.bytes();
-    let buffer = std::slice::from_raw_parts(bytes.as_ptr(), length).to_vec();
-
-    Ok(buffer)
+    Ok(data.to_vec())
 }

@@ -33,6 +33,9 @@ uuid = { version = "1", features = ["v4"] }
 base64 = "0.22.1"
 thiserror = "1.0"
 image = { version = "0.25", default-features = false, features = ["png", "jpeg"] }
+# Tauri 3 exposes the platform webview through the wry runtime handle, so every
+# platform needs the runtime crate to downcast and reach the native view.
+tauri-runtime-wry = "3.0.0-alpha.3"
 
 # We only need to add dependencies that Tauri doesn't already provide
 # Tauri already includes:
@@ -50,7 +53,6 @@ block2 = "0.6"
 objc2-foundation = { version = "0.3", features = ["NSData", "NSError", "NSString", "NSDictionary"] }
 objc2-app-kit = { version = "0.3", features = ["NSImage", "NSImageRep", "NSBitmapImageRep"] }
 objc2-web-kit = { version = "0.3", features = ["WKWebView", "WKSnapshotConfiguration", "block2", "objc2-app-kit"] }
-tauri-runtime-wry = "3.0.0-alpha.3"
 
 [target.'cfg(all(target_vendor = "apple", not(target_os = "macos")))'.dependencies]
 objc2 = "0.6"
@@ -62,9 +64,9 @@ objc2-ui-kit = { version = "0.3", features = ["UIImage"] }
 objc2-web-kit = { version = "0.3", features = ["WKSnapshotConfiguration", "block2"] }
 
 [target.'cfg(target_os = "windows")'.dependencies]
-webview2-com = "0.38"
-windows = { version = "0.61", features = ["Win32_System_Com", "Win32_System_Com_StructuredStorage", "Win32_Foundation"] }
-windows-core = "0.61"
+webview2-com = "0.39"
+windows = { version = "0.62", features = ["Win32_System_Com", "Win32_System_Com_StructuredStorage", "Win32_Foundation"] }
+windows-core = "0.62"
 
 [target.'cfg(target_os = "linux")'.dependencies]
 webkit2gtk = "2.0"

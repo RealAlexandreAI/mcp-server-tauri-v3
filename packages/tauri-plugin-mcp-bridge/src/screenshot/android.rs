@@ -22,6 +22,12 @@ pub fn capture_viewport<R: Runtime>(
         // Use Tauri's with_webview to access the Android WebView via JNI
         window
             .with_webview(move |webview| {
+                let Some(webview) = webview.downcast_ref::<tauri_runtime_wry::Webview>() else {
+                    let _ = tx.send(Err(ScreenshotError::CaptureFailed(
+                        "Webview is not backed by the wry runtime".to_string(),
+                    )));
+                    return;
+                };
                 webview
                     .jni_handle()
                     .exec(move |env, _activity, webview_obj| {
