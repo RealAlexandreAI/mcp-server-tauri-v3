@@ -10,7 +10,7 @@ You can copy them as-is or adapt them to your project.
 
 **Prompt:**
 
-"Help me set up the Tauri MCP bridge plugin in my existing Tauri v2 or v3 alpha app.
+"Help me set up the Tauri MCP bridge plugin in my existing Tauri v3 app.
 
 Please:
 - Inspect my repo structure and Tauri config files.

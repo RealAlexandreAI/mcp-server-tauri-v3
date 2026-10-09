@@ -17,7 +17,7 @@ npx @hypothesi/tauri-mcp-cli <command>
 
 ## Prerequisites
 
-- A Tauri v2 app, or a Tauri v3 alpha app on the `feat/tauri-v3-compat` branch, running in development mode (`cargo tauri dev`)
+- A Tauri v3 app running in development mode (`cargo tauri dev`)
 - The `tauri-plugin-mcp-bridge` plugin installed in the app
 - `withGlobalTauri: true` in `src-tauri/tauri.conf.json`
 

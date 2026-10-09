@@ -2,7 +2,7 @@
   "name": "@hypothesi/tauri-mcp-server",
   "version": "0.13.0",
   "mcpName": "io.github.hypothesi/mcp-server-tauri",
-  "description": "A Model Context Protocol server for Tauri v2 applications, with a fork branch for Tauri v3 alpha",
+  "description": "A Model Context Protocol server for Tauri v3 applications",
   "type": "module",
   "main": "./dist/api.js",
   "types": "./dist/api.d.ts",
@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/RealAlexandreAI/mcp-server-tauri.git",
+    "url": "https://github.com/RealAlexandreAI/mcp-server-tauri-v3.git",
     "directory": "packages/mcp-server"
   },
   "files": [

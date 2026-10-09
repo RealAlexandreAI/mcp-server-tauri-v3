@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.hypothesi/mcp-server-tauri",
-  "description": "A Model Context Protocol server for Tauri v2 applications, with a fork branch for Tauri v3 alpha",
+  "description": "A Model Context Protocol server for Tauri v3 applications",
   "repository": {
     "url": "https://github.com/hypothesi/mcp-server-tauri",
     "source": "github",

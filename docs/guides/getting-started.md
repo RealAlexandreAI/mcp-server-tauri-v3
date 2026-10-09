@@ -23,7 +23,7 @@ const SETUP_INSTRUCTIONS = `Help me set up or update the MCP Bridge plugin in my
 
 ## Prerequisites Check
 
-First, verify this is a Tauri v2 or Tauri v3 alpha project:
+First, verify this is a Tauri v3 project:
 - Look for \`src-tauri/\` directory and \`tauri.conf.json\`
 - If this is NOT a Tauri project, stop and let me know this setup only applies to Tauri apps
 
@@ -86,7 +86,7 @@ This guide will walk you through integrating MCP Server Tauri into your existing
 
 Before you begin, ensure you have:
 
-- An existing **Tauri 2.x** application (or use the `feat/tauri-v3-compat` branch for Tauri 3 alpha)
+- An existing **Tauri 3.x** application
 - **Node.js** 20+ and npm
 - **Rust** and Cargo
 - An MCP-compatible AI Assistant (Claude Code, Cursor, Windsurf, VS Code, etc.)

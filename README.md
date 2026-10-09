@@ -1,23 +1,23 @@
 <div align="center">
 
-<img src="docs/public/logo.svg" alt="MCP Server Tauri" width="120" height="120" />
+<img src="docs/public/logo.svg" alt="MCP Server Tauri v3" width="120" height="120" />
 
-# MCP Server Tauri
+# MCP Server Tauri v3
 
-**Give your AI assistant superpowers for Tauri development**
+**MCP server and bridge plugin for Tauri v3 development**
 
 [![npm version](https://img.shields.io/npm/v/@hypothesi/tauri-mcp-server?style=flat-square&color=0ea5e9)](https://www.npmjs.com/package/@hypothesi/tauri-mcp-server)
 [![crates.io](https://img.shields.io/crates/v/tauri-plugin-mcp-bridge?style=flat-square&color=e6522c)](https://crates.io/crates/tauri-plugin-mcp-bridge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-8b5cf6.svg?style=flat-square)](LICENSE)
 [![Tauri v3 alpha](https://img.shields.io/badge/Tauri-v3--alpha-FFC131?style=flat-square&logo=tauri&logoColor=white)](https://tauri.app)
 
-[Documentation](https://hypothesi.github.io/mcp-server-tauri) · [Getting Started](#quick-start) · [Available Tools](#available-tools)
+[Repository](https://github.com/RealAlexandreAI/mcp-server-tauri-v3) · [Getting Started](#quick-start) · [Available Tools](#available-tools)
 
 </div>
 
 ---
 
-A **Model Context Protocol (MCP) server** that enables AI assistants like Claude, Cursor, and Windsurf to build, test, and debug [Tauri®](https://tauri.app) v2 applications. Screenshots, DOM state, and console logs from your running app give the AI rich context to understand what's happening—and tools to interact with it.
+A **Model Context Protocol (MCP) server** that enables AI assistants like Claude, Cursor, and Windsurf to build, test, and debug [Tauri®](https://tauri.app) v3 applications. Screenshots, DOM state, and console logs from your running app give the AI rich context to understand what's happening—and tools to interact with it.
 
 ## ✨ Features
 
@@ -204,8 +204,8 @@ Just type the command in your AI assistant to start a guided workflow.
 
 ```bash
 # Clone and install
-git clone https://github.com/hypothesi/mcp-server-tauri.git
-cd mcp-server-tauri
+git clone https://github.com/RealAlexandreAI/mcp-server-tauri-v3.git
+cd mcp-server-tauri-v3
 npm install
 
 # Build all packages
