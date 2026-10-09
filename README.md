@@ -9,7 +9,7 @@
 [![npm version](https://img.shields.io/npm/v/@hypothesi/tauri-mcp-server?style=flat-square&color=0ea5e9)](https://www.npmjs.com/package/@hypothesi/tauri-mcp-server)
 [![crates.io](https://img.shields.io/crates/v/tauri-plugin-mcp-bridge?style=flat-square&color=e6522c)](https://crates.io/crates/tauri-plugin-mcp-bridge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-8b5cf6.svg?style=flat-square)](LICENSE)
-[![Tauri v2/v3](https://img.shields.io/badge/Tauri-v2%20%7C%20v3--alpha-FFC131?style=flat-square&logo=tauri&logoColor=white)](https://tauri.app)
+[![Tauri v3 alpha](https://img.shields.io/badge/Tauri-v3--alpha-FFC131?style=flat-square&logo=tauri&logoColor=white)](https://tauri.app)
 
 [Documentation](https://hypothesi.github.io/mcp-server-tauri) · [Getting Started](#quick-start) · [Available Tools](#available-tools)
 

@@ -1,6 +1,6 @@
 ---
 name: tauri-mcp-cli
-description: Use the Tauri MCP CLI to start and recover driver sessions, automate Tauri webviews, capture UI state, debug IPC, and work with mobile or remote devices. Use whenever an agent needs to operate a Tauri v2 app from terminal commands.
+description: Use the Tauri MCP CLI to start and recover driver sessions, automate Tauri webviews, capture UI state, debug IPC, and work with mobile or remote devices. Use whenever an agent needs to operate a Tauri v2 app, or a Tauri v3 alpha app on the compatibility branch, from terminal commands.
 license: MIT
 metadata:
   sources:
