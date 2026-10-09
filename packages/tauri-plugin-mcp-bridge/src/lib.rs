@@ -174,7 +174,7 @@ pub fn init_with_config<R: Runtime>(config: Config) -> TauriPlugin<R> {
             commands::list_windows::list_windows,
             commands::script_injection::request_script_injection,
         ])
-        .js_init_script(include_str!("bridge.js").to_string())
+        .initialization_script(include_str!("bridge.js"))
         .setup(move |app, _api| {
             // Initialize script executor state
             app.manage(ScriptExecutor::new());

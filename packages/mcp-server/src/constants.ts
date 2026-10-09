@@ -13,7 +13,7 @@ export const SETUP_INSTRUCTIONS = `Help me set up or update the MCP Bridge plugi
 
 ## Prerequisites Check
 
-First, verify this is a Tauri v2 project:
+First, verify this is a Tauri v2 or v3 project:
 - Look for \`src-tauri/\` directory and \`tauri.conf.json\`
 - If this is NOT a Tauri project, stop and let me know this setup only applies to Tauri apps
 

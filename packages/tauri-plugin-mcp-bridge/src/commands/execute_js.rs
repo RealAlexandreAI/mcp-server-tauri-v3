@@ -82,7 +82,9 @@ fn native_evaluate_js<R: Runtime>(
     window
         .with_webview(move |webview| {
             unsafe {
-                let wkwebview: &WKWebView = &*(webview.inner() as *const _ as *const WKWebView);
+                let wkwebview: &WKWebView = webview
+                    .downcast_ref::<WKWebView>()
+                    .expect("macOS webview must be a WKWebView");
 
                 let tx_clone = tx.clone();
                 let handler = RcBlock::new(

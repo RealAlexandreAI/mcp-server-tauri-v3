@@ -32,7 +32,9 @@ pub fn capture_viewport<R: Runtime>(
             .with_webview(move |webview| {
                 unsafe {
                     // Get the WKWebView from Tauri's webview handle
-                    let wkwebview: &WKWebView = &*(webview.inner() as *const _ as *const WKWebView);
+                    let wkwebview: &WKWebView = webview
+                        .downcast_ref::<WKWebView>()
+                        .expect("macOS webview must be a WKWebView");
 
                     // Create snapshot configuration (nil means capture visible viewport)
                     let config = WKSnapshotConfiguration::new();

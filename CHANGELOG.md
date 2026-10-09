@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [Unreleased]
+
+### Added
+
+- Tauri 3 alpha compatibility for the bridge plugin and test app.
+  - Migrated `PlatformWebview::inner` usage to `PlatformWebview::downcast_ref`.
+  - Migrated plugin initialization from `js_init_script` to `initialization_script`.
+  - Made the Wry runtime explicit for Tauri 3 apps.
+  - Declared `@tauri-apps/api` compatibility with both Tauri 2 and 3 alpha.
+
 ## [0.13.0] - 2026-08-28
 
 ### Added
